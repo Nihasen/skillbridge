@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration – SkillBridge</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      background: radial-gradient(circle at 50% 10%, rgba(37, 99, 235, 0.08) 0%, rgba(248, 250, 252, 1) 80%);
+    }
+
+    .register-card {
+      width: 100%;
+      max-width: 620px;
+      background: var(--white);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 640px) {
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="auth-page">
+    <div class="register-card">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <a href="index.html" class="brand-logo" style="justify-content: center; margin-bottom: 1.25rem;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+          <span>Skill<span class="highlight">Bridge</span></span>
+        </a>
+        <h2>Create Student Account</h2>
+        <p class="text-sm text-muted" style="margin-top: 0.25rem;">Join your university peer exchange network</p>
+      </div>
+
+      <form id="student-register-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="fullName">Full Name</label>
+            <input type="text" id="fullName" class="form-control" placeholder="e.g. Maya Lin" required>
+            <span class="form-feedback">Full name is required.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="rollNo">Student ID / Roll No</label>
+            <input type="text" id="rollNo" class="form-control" placeholder="e.g. CS2024-082" required>
+            <span class="form-feedback">Student ID is required.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Campus Email</label>
+          <input type="email" id="email" class="form-control" placeholder="e.g. maya.lin@campus.edu" required>
+          <span class="form-feedback">Valid college email required.</span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="department">Department / Major</label>
+            <select id="department" class="form-control" required>
+              <option value="" disabled selected>Select Department</option>
+              <option value="Computer Science">Computer Science & Eng.</option>
+              <option value="Data Science & AI">Data Science & AI</option>
+              <option value="Design & Media">Design & Digital Media</option>
+              <option value="Electronics & Comm.">Electronics & Comm.</option>
+              <option value="Business & Management">Business & Management</option>
+              <option value="Linguistics & Arts">Linguistics & Humanities</option>
+              <option value="Bioinformatics">Bioinformatics & Sciences</option>
+            </select>
+            <span class="form-feedback">Please select your department.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="year">Year of Study</label>
+            <select id="year" class="form-control" required>
+              <option value="" disabled selected>Select Year</option>
+              <option value="1st Year">1st Year (Freshman)</option>
+              <option value="2nd Year">2nd Year (Sophomore)</option>
+              <option value="3rd Year">3rd Year (Junior)</option>
+              <option value="4th Year">4th Year (Senior)</option>
+              <option value="Graduate / Master">Graduate / Master's</option>
+            </select>
+            <span class="form-feedback">Please select academic year.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="teachSkills">
+            <span>Skills You Can Teach</span>
+            <span class="form-label-optional">Comma separated</span>
+          </label>
+          <input type="text" id="teachSkills" class="form-control" placeholder="e.g. React.js, Tailwind CSS, Git" required>
+          <span class="form-feedback">At least one skill required.</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="learnSkills">
+            <span>Skills You Want to Learn</span>
+            <span class="form-label-optional">Comma separated</span>
+          </label>
+          <input type="text" id="learnSkills" class="form-control" placeholder="e.g. Figma UI Design, PyTorch, Spanish" required>
+          <span class="form-feedback">At least one skill required.</span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="Minimum 6 characters" required>
+            <span class="form-feedback">Password must be at least 6 characters.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" class="form-control" placeholder="Repeat password" required>
+            <span class="form-feedback">Passwords must match.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="terms" required checked>
+            <span>I agree to the <a href="#">Campus Peer Code of Conduct</a> and academic integrity policy.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 0.5rem;">
+          Complete Registration & Enter Platform
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem;">
+        Already have an account? <a href="login.html" class="font-semibold">Sign in here</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

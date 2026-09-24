@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports & Analytics – SkillBridge Campus Administration</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <style>
+    .gap-metric-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--slate-100);
+      gap: 1.5rem;
+    }
+
+    .gap-metric-row:last-child {
+      border-bottom: none;
+    }
+
+    .gap-bar-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .gap-bar-track {
+      height: 10px;
+      background-color: var(--slate-100);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      display: flex;
+    }
+
+    .gap-bar-demand {
+      background: var(--primary);
+      height: 100%;
+    }
+
+    .gap-bar-supply {
+      background: var(--success);
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-layout manager-portal">
+    <!-- Manager Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="color: #7c3aed;">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+          <span>Skill<span style="color: #7c3aed;">Bridge</span></span>
+        </a>
+        <button class="sidebar-close btn-icon-only">✕</button>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div style="padding: 0 0.75rem; margin-bottom: 0.75rem;">
+            <span class="manager-badge">Admin Portal</span>
+          </div>
+          <div class="sidebar-section-title">Administration</div>
+          <nav class="sidebar-nav">
+            <a href="dashboard.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+              <span>Manager Dashboard</span>
+            </a>
+
+            <a href="students.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+              <span>Manage Students</span>
+            </a>
+
+            <a href="skills.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+              <span>Manage Skills</span>
+            </a>
+
+            <a href="requests.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+              <span>Manage Requests</span>
+            </a>
+
+            <a href="reports.html" class="sidebar-link active">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+              <span>Reports & Analytics</span>
+            </a>
+          </nav>
+        </div>
+
+        <div>
+          <div class="sidebar-section-title">Portals</div>
+          <nav class="sidebar-nav">
+            <a href="../dashboard.html" class="sidebar-link" style="color: var(--primary);">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+              <span>Switch to Student View</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar" style="background: #f5f3ff; color: #7c3aed;">EH</div>
+          <div class="user-info">
+            <div class="user-name">Dr. Eleanor Hayes</div>
+            <div class="user-role">Peer Learning Coordinator</div>
+          </div>
+          <a href="login.html" title="Sign Out" style="color: var(--slate-400); padding: 0.35rem;">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper" id="manager-reports-view">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn">☰</button>
+          <div class="page-breadcrumb">
+            <a href="dashboard.html">Administration</a>
+            <span>/</span>
+            <span class="current">Reports & Analytics</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <button id="mgr-export-report-btn" class="btn btn-primary btn-sm" style="background: #7c3aed;">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            Export Analytics CSV
+          </button>
+        </div>
+      </header>
+
+      <div class="content-container">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Campus Skill Supply & Demand Analytics</h1>
+            <p class="page-description">Identify skill gaps, departmental engagement, and high-priority learning demand</p>
+          </div>
+        </div>
+
+        <!-- 2 Column Analytics Grid -->
+        <div style="display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; align-items: start;">
+          <!-- Left: Skill Demand vs Supply Gap Analysis -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Skill Gap Analysis (Demand vs Supply)</h3>
+                <div class="card-subtitle">Comparing student requests (Demand) against available student mentors (Supply)</div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1.5rem; margin-bottom: 1.5rem; font-size: 0.8rem; font-weight: 600;">
+              <div style="display: flex; align-items: center; gap: 0.4rem;">
+                <span style="width: 12px; height: 12px; background: var(--primary); border-radius: 2px;"></span>
+                <span>Student Demand (Requests)</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.4rem;">
+                <span style="width: 12px; height: 12px; background: var(--success); border-radius: 2px;"></span>
+                <span>Mentor Supply (Listed)</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="gap-metric-row">
+                <div style="width: 160px; font-weight: 600; font-size: 0.875rem;">Python PyTorch & ML</div>
+                <div class="gap-bar-container">
+                  <div class="gap-bar-track">
+                    <div class="gap-bar-demand" style="width: 88%;"></div>
+                  </div>
+                  <div class="gap-bar-track">
+                    <div class="gap-bar-supply" style="width: 42%;"></div>
+                  </div>
+                </div>
+                <span class="badge badge-pending">High Gap</span>
+              </div>
+
+              <div class="gap-metric-row">
+                <div style="width: 160px; font-weight: 600; font-size: 0.875rem;">UI/UX Design in Figma</div>
+                <div class="gap-bar-container">
+                  <div class="gap-bar-track">
+                    <div class="gap-bar-demand" style="width: 74%;"></div>
+                  </div>
+                  <div class="gap-bar-track">
+                    <div class="gap-bar-supply" style="width: 35%;"></div>
+                  </div>
+                </div>
+                <span class="badge badge-pending">High Gap</span>
+              </div>
+
+              <div class="gap-metric-row">
+                <div style="width: 160px; font-weight: 600; font-size: 0.875rem;">React.js & Web Dev</div>
+                <div class="gap-bar-container">
+                  <div class="gap-bar-track">
+                    <div class="gap-bar-demand" style="width: 80%;"></div>
+                  </div>
+                  <div class="gap-bar-track">
+                    <div class="gap-bar-supply" style="width: 78%;"></div>
+                  </div>
+                </div>
+                <span class="badge badge-accepted">Balanced</span>
+              </div>
+
+              <div class="gap-metric-row">
+                <div style="width: 160px; font-weight: 600; font-size: 0.875rem;">DSA & Competitive C++</div>
+                <div class="gap-bar-container">
+                  <div class="gap-bar-track">
+                    <div class="gap-bar-demand" style="width: 92%;"></div>
+                  </div>
+                  <div class="gap-bar-track">
+                    <div class="gap-bar-supply" style="width: 65%;"></div>
+                  </div>
+                </div>
+                <span class="badge badge-primary">Moderate</span>
+              </div>
+
+              <div class="gap-metric-row">
+                <div style="width: 160px; font-weight: 600; font-size: 0.875rem;">Financial Modeling</div>
+                <div class="gap-bar-container">
+                  <div class="gap-bar-track">
+                    <div class="gap-bar-demand" style="width: 58%;"></div>
+                  </div>
+                  <div class="gap-bar-track">
+                    <div class="gap-bar-supply" style="width: 25%;"></div>
+                  </div>
+                </div>
+                <span class="badge badge-pending">High Gap</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Department Engagement -->
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div class="card">
+              <h3 class="card-title" style="margin-bottom: 0.35rem;">Department Participation</h3>
+              <p class="card-subtitle" style="margin-bottom: 1.5rem;">Share of total peer exchanges by campus faculty</p>
+
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+                    <strong>Computer Science</strong>
+                    <span>38% (156 exchanges)</span>
+                  </div>
+                  <div style="height: 6px; background: var(--slate-100); border-radius: 3px; overflow: hidden;">
+                    <div style="width: 38%; height: 100%; background: var(--primary);"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+                    <strong>Data Science & AI</strong>
+                    <span>24% (98 exchanges)</span>
+                  </div>
+                  <div style="height: 6px; background: var(--slate-100); border-radius: 3px; overflow: hidden;">
+                    <div style="width: 24%; height: 100%; background: #6366f1;"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+                    <strong>Design & Digital Media</strong>
+                    <span>18% (74 exchanges)</span>
+                  </div>
+                  <div style="height: 6px; background: var(--slate-100); border-radius: 3px; overflow: hidden;">
+                    <div style="width: 18%; height: 100%; background: #ec4899;"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+                    <strong>Business & Finance</strong>
+                    <span>12% (49 exchanges)</span>
+                  </div>
+                  <div style="height: 6px; background: var(--slate-100); border-radius: 3px; overflow: hidden;">
+                    <div style="width: 12%; height: 100%; background: #f59e0b;"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.25rem;">
+                    <strong>Electronics & Linguistics</strong>
+                    <span>8% (35 exchanges)</span>
+                  </div>
+                  <div style="height: 6px; background: var(--slate-100); border-radius: 3px; overflow: hidden;">
+                    <div style="width: 8%; height: 100%; background: #10b981;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); color: var(--white); border-color: #312e81;">
+              <h4 style="color: var(--white); margin-bottom: 0.5rem;">Academic Coordinator Recommendation</h4>
+              <p class="text-xs" style="color: #cbd5e1; line-height: 1.6; margin-bottom: 1rem;">
+                Host a targeted peer workshop on <strong>UI/UX Design</strong> and <strong>Financial Modeling</strong> to encourage more senior mentors in these high-gap topics.
+              </p>
+              <button class="btn btn-outline-white btn-sm" onclick="showToast('Initiative Logged', 'Peer recruitment campaign scheduled for next Monday.', 'success')">
+                Schedule Mentor Recruitment
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/manager.js"></script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+/* ==========================================================================
+   SkillBridge Chat & Messaging Interface Styles
+   ========================================================================== */
+
+.chat-container {
+  display: flex;
+  height: calc(100vh - 140px);
+  min-height: 540px;
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Chat Sidebar (Contacts List) */
+.chat-sidebar {
+  width: 320px;
+  border-right: 1px solid var(--slate-200);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  flex-shrink: 0;
+}
+
+.chat-search-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--slate-100);
+}
+
+.chat-contacts-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.chat-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.chat-contact-item:hover {
+  background-color: var(--slate-50);
+}
+
+.chat-contact-item.active {
+  background-color: var(--primary-light);
+}
+
+.chat-contact-item.active .chat-contact-name {
+  color: var(--primary-dark);
+}
+
+.contact-avatar-wrap {
+  position: relative;
+}
+
+.online-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--success);
+  border: 2px solid var(--white);
+}
+
+.online-dot.offline {
+  background-color: var(--slate-400);
+}
+
+.chat-contact-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.chat-contact-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.2rem;
+}
+
+.chat-contact-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy-900);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-contact-time {
+  font-size: 0.72rem;
+  color: var(--slate-400);
+}
+
+.chat-contact-last-msg {
+  font-size: 0.8rem;
+  color: var(--slate-500);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-skill-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--primary);
+  background-color: var(--primary-light);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-xs);
+  display: inline-block;
+  margin-top: 0.2rem;
+}
+
+.chat-unread-count {
+  background-color: var(--primary);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+}
+
+/* Chat Main Discussion Window */
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #fafbfc;
+  min-width: 0;
+}
+
+.chat-main-header {
+  padding: 1rem 1.5rem;
+  background: var(--white);
+  border-bottom: 1px solid var(--slate-200);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.chat-header-user {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.chat-exchange-context {
+  background-color: #f1f5f9;
+  border: 1px solid var(--slate-200);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--navy-800);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chat-exchange-context span.highlight {
+  color: var(--primary);
+}
+
+/* Messages Scroll Area */
+.chat-messages-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.chat-date-separator {
+  text-align: center;
+  position: relative;
+  margin: 0.5rem 0;
+}
+
+.chat-date-separator span {
+  background-color: var(--slate-200);
+  color: var(--slate-600);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+}
+
+.message-bubble-group {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 75%;
+}
+
+.message-bubble-group.sent {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.message-bubble-group.received {
+  align-self: flex-start;
+}
+
+.message-bubble {
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--radius-lg);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  position: relative;
+  word-break: break-word;
+}
+
+.message-bubble-group.received .message-bubble {
+  background-color: var(--white);
+  color: var(--navy-900);
+  border: 1px solid var(--slate-200);
+  border-top-left-radius: 4px;
+  box-shadow: var(--shadow-xs);
+}
+
+.message-bubble-group.sent .message-bubble {
+  background: var(--primary-gradient);
+  color: var(--white);
+  border-top-right-radius: 4px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.message-time {
+  font-size: 0.7rem;
+  margin-top: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.message-bubble-group.received .message-time {
+  color: var(--slate-400);
+}
+
+.message-bubble-group.sent .message-time {
+  color: rgba(255, 255, 255, 0.8);
+  justify-content: flex-end;
+}
+
+/* Chat Input Bar */
+.chat-input-bar {
+  padding: 1rem 1.5rem;
+  background-color: var(--white);
+  border-top: 1px solid var(--slate-200);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.chat-input-field {
+  flex: 1;
+  background-color: var(--slate-50);
+  border: 1.5px solid var(--slate-200);
+  border-radius: var(--radius-full);
+  padding: 0.7rem 1.25rem;
+  font-size: 0.9rem;
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.chat-input-field:focus {
+  background-color: var(--white);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* Mobile responsive chat */
+@media (max-width: 768px) {
+  .chat-sidebar {
+    width: 100%;
+  }
+
+  .chat-container.chat-active-view .chat-sidebar {
+    display: none;
+  }
+
+  .chat-container:not(.chat-active-view) .chat-main {
+    display: none;
+  }
+}

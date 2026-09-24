@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillBridge – Student Skill Exchange Platform</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <style>
+    /* Landing Page Specific Enhancements */
+    .hero-section {
+      padding: 5.5rem 1.5rem 4rem;
+      background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #2563eb;
+      padding: 0.35rem 0.95rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+      max-width: 820px;
+      margin: 0 auto 1.25rem;
+      color: var(--navy-900);
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--navy-600);
+      max-width: 640px;
+      margin: 0 auto 2.25rem;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-preview-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--slate-200);
+      background: var(--white);
+      box-shadow: var(--shadow-xl);
+      padding: 1rem;
+      position: relative;
+    }
+
+    .hero-preview-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--slate-100);
+      margin-bottom: 1rem;
+    }
+
+    .window-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #f87171; }
+    .dot-yellow { background: #fbbf24; }
+    .dot-green { background: #34d399; }
+
+    .hero-card-showcase {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      text-align: left;
+    }
+
+    .section-padding {
+      padding: 5rem 1.5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .section-eyebrow {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .step-card {
+      background: var(--white);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem 1.75rem;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .step-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-border);
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .feature-banner {
+      background: linear-gradient(135deg, var(--navy-950) 0%, var(--navy-900) 100%);
+      color: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 4rem 3rem;
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+
+    .feature-banner h3 {
+      color: var(--white);
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-banner p {
+      color: var(--slate-300);
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-title { font-size: 2.5rem; }
+      .hero-card-showcase { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .feature-banner { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Public Header -->
+  <header class="public-header">
+    <div class="public-nav-container">
+      <a href="index.html" class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+          <path d="M2 17l10 5 10-5"></path>
+          <path d="M2 12l10 5 10-5"></path>
+        </svg>
+        <span>Skill<span class="highlight">Bridge</span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#skills" class="nav-link">Trending Skills</a>
+        <a href="#mentors" class="nav-link">Top Mentors</a>
+        <a href="search-skills.html" class="nav-link">Explore Directory</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="manager/login.html" class="btn btn-secondary btn-sm" title="Campus Admin Portal">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+          Manager Portal
+        </a>
+        <a href="login.html" class="btn btn-outline btn-sm">Sign In</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get Started</a>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-badge">
+        <span style="font-size: 1.1rem;">⚡</span>
+        Zero Cost • Peer-to-Peer • 100% Student Powered
+      </div>
+      <h1 class="hero-title">
+        Teach What You Master. <br>
+        <span class="text-gradient">Learn What You Need.</span>
+      </h1>
+      <p class="hero-subtitle">
+        SkillBridge connects ambitious college students to trade skills 1-on-1. 
+        Swap React for Figma, Python for Financial Modeling, or DSA for Spanish.
+      </p>
+
+      <div class="hero-actions">
+        <a href="register.html" class="btn btn-primary btn-lg">
+          Join SkillBridge Free
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+        <a href="search-skills.html" class="btn btn-secondary btn-lg">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          Explore Campus Skills
+        </a>
+        <a href="dashboard.html" class="btn btn-outline btn-lg" style="border-style: dashed;">
+          ⚡ Instant Demo (Student Dashboard)
+        </a>
+      </div>
+
+      <!-- Hero Dashboard Preview Showcase -->
+      <div class="hero-preview-container">
+        <div class="hero-preview-bar">
+          <span class="window-dot dot-red"></span>
+          <span class="window-dot dot-yellow"></span>
+          <span class="window-dot dot-green"></span>
+          <span style="font-size: 0.75rem; color: var(--slate-400); margin-left: 0.5rem; font-weight: 600;">skillbridge.campus.edu/board — Live Exchange Matches</span>
+        </div>
+
+        <div class="hero-card-showcase">
+          <!-- Card 1 -->
+          <div class="card card-hover" style="border: 1px solid var(--slate-200);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.75rem;">
+              <span class="badge badge-primary">Web Development</span>
+              <span style="color: #f59e0b; font-weight: 700; font-size: 0.85rem;">★ 4.9</span>
+            </div>
+            <h4 style="margin-bottom: 0.4rem;">React.js & Tailwind CSS</h4>
+            <p class="text-sm text-muted" style="margin-bottom: 1rem;">Offered by <strong>Alex Rivera</strong> (CS '25)</p>
+            <div style="background: var(--slate-50); padding: 0.65rem; border-radius: 8px; font-size: 0.8rem; margin-bottom: 1rem;">
+              <span style="color: var(--slate-500);">Seeking:</span> <strong>UI/UX Design in Figma</strong>
+            </div>
+            <a href="search-skills.html" class="btn btn-outline btn-sm" style="width: 100%;">Request Barter</a>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card card-hover" style="border: 1px solid var(--primary-border); background: #fdfefe;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.75rem;">
+              <span class="badge badge-indigo">AI & Data Science</span>
+              <span style="color: #f59e0b; font-weight: 700; font-size: 0.85rem;">★ 5.0</span>
+            </div>
+            <h4 style="margin-bottom: 0.4rem;">Python Machine Learning</h4>
+            <p class="text-sm text-muted" style="margin-bottom: 1rem;">Offered by <strong>Sarah Chen</strong> (Data Science '24)</p>
+            <div style="background: var(--slate-50); padding: 0.65rem; border-radius: 8px; font-size: 0.8rem; margin-bottom: 1rem;">
+              <span style="color: var(--slate-500);">Seeking:</span> <strong>Frontend React Boilerplates</strong>
+            </div>
+            <a href="search-skills.html" class="btn btn-primary btn-sm" style="width: 100%;">Request Barter</a>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card card-hover" style="border: 1px solid var(--slate-200);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.75rem;">
+              <span class="badge badge-neutral">Design & Media</span>
+              <span style="color: #f59e0b; font-weight: 700; font-size: 0.85rem;">★ 4.8</span>
+            </div>
+            <h4 style="margin-bottom: 0.4rem;">UI/UX Design in Figma</h4>
+            <p class="text-sm text-muted" style="margin-bottom: 1rem;">Offered by <strong>Marcus Vance</strong> (Design '25)</p>
+            <div style="background: var(--slate-50); padding: 0.65rem; border-radius: 8px; font-size: 0.8rem; margin-bottom: 1rem;">
+              <span style="color: var(--slate-500);">Seeking:</span> <strong>JavaScript Web Frameworks</strong>
+            </div>
+            <a href="search-skills.html" class="btn btn-outline btn-sm" style="width: 100%;">Request Barter</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section-padding" style="background-color: var(--white); border-top: 1px solid var(--slate-200); border-bottom: 1px solid var(--slate-200);">
+      <div class="section-header">
+        <span class="section-eyebrow">Simplicity First</span>
+        <h2>How SkillBridge Works</h2>
+        <p>No subscriptions, no cash transactions. An honest bartering system designed specifically for campus learners.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3 style="margin-bottom: 0.75rem;">Post Your Skillset</h3>
+          <p>List skills you are confident teaching (coding, graphic design, calculus, music) and skills you are eager to master.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3 style="margin-bottom: 0.75rem;">Find a Skill Match</h3>
+          <p>Browse the verified campus directory. Send a targeted learning request with your preferred exchange hours and barter offer.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3 style="margin-bottom: 0.75rem;">Learn & Exchange</h3>
+          <p>Once accepted, use the internal chat to coordinate live sessions. Rate each other after learning to build your campus reputation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trending Skills Categories -->
+    <section id="skills" class="section-padding">
+      <div class="section-header">
+        <span class="section-eyebrow">Campus Catalog</span>
+        <h2>Explore Trending Skill Categories</h2>
+        <p>Discover dozens of skills taught by your classmates across faculties and years.</p>
+      </div>
+
+      <div style="max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem;">
+        <div class="card card-hover" style="text-align: center; padding: 2rem 1.5rem;">
+          <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">💻</div>
+          <h4 style="margin-bottom: 0.35rem;">Web & App Dev</h4>
+          <p class="text-sm text-muted">React, Node.js, Flutter, Tailwind, HTML/CSS</p>
+          <span class="badge badge-primary" style="margin-top: 1rem;">24 Active Mentors</span>
+        </div>
+
+        <div class="card card-hover" style="text-align: center; padding: 2rem 1.5rem;">
+          <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">🤖</div>
+          <h4 style="margin-bottom: 0.35rem;">AI & Data Science</h4>
+          <p class="text-sm text-muted">Python, PyTorch, Pandas, SQL, Data Visualization</p>
+          <span class="badge badge-indigo" style="margin-top: 1rem;">19 Active Mentors</span>
+        </div>
+
+        <div class="card card-hover" style="text-align: center; padding: 2rem 1.5rem;">
+          <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">🎨</div>
+          <h4 style="margin-bottom: 0.35rem;">Design & Creative</h4>
+          <p class="text-sm text-muted">Figma, UI/UX Systems, Video Editing, 3D Blender</p>
+          <span class="badge badge-primary" style="margin-top: 1rem;">15 Active Mentors</span>
+        </div>
+
+        <div class="card card-hover" style="text-align: center; padding: 2rem 1.5rem;">
+          <div style="font-size: 2.2rem; margin-bottom: 0.75rem;">📊</div>
+          <h4 style="margin-bottom: 0.35rem;">Business & Finance</h4>
+          <p class="text-sm text-muted">Excel Modeling, Pitch Decks, Case Prep, Investing</p>
+          <span class="badge badge-neutral" style="margin-top: 1rem;">11 Active Mentors</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Top Mentors Showcase -->
+    <section id="mentors" class="section-padding" style="background-color: var(--white); border-top: 1px solid var(--slate-200);">
+      <div class="section-header">
+        <span class="section-eyebrow">Peer Leaders</span>
+        <h2>Meet Featured Student Mentors</h2>
+        <p>Students recognized for high ratings, punctuality, and clear peer instruction.</p>
+      </div>
+
+      <div style="max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+        <!-- Mentor 1 -->
+        <div class="card card-hover">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem;">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=250" class="user-avatar user-avatar-lg" alt="Sarah Chen">
+            <div>
+              <h4 style="font-size: 1.15rem;">Sarah Chen</h4>
+              <p class="text-sm text-muted">Data Science & AI • 4th Year</p>
+              <div style="color: #f59e0b; font-weight: 700; font-size: 0.85rem; margin-top: 0.2rem;">
+                ★★★★★ <span style="color: var(--navy-800);">5.0</span> (22 reviews)
+              </div>
+            </div>
+          </div>
+          <p class="text-sm" style="margin-bottom: 1.25rem;">"Taught 26 peers PyTorch fundamentals and received awesome React web advice in return. SkillBridge made my final year project possible!"</p>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <span class="tag tag-teach">Teaches: PyTorch</span>
+            <span class="tag tag-learn">Learns: React.js</span>
+          </div>
+        </div>
+
+        <!-- Mentor 2 -->
+        <div class="card card-hover">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem;">
+            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=250" class="user-avatar user-avatar-lg" alt="Aisha Al-Mansoor">
+            <div>
+              <h4 style="font-size: 1.15rem;">Aisha Al-Mansoor</h4>
+              <p class="text-sm text-muted">Computer Science • 4th Year</p>
+              <div style="color: #f59e0b; font-weight: 700; font-size: 0.85rem; margin-top: 0.2rem;">
+                ★★★★★ <span style="color: var(--navy-800);">5.0</span> (31 reviews)
+              </div>
+            </div>
+          </div>
+          <p class="text-sm" style="margin-bottom: 1.25rem;">"Codeforces Candidate Master. I love helping 1st and 2nd years crack tree & graph problems before technical interviews."</p>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <span class="tag tag-teach">Teaches: DSA & C++</span>
+            <span class="tag tag-learn">Learns: System Design</span>
+          </div>
+        </div>
+
+        <!-- Mentor 3 -->
+        <div class="card card-hover">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem;">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=250" class="user-avatar user-avatar-lg" alt="Marcus Vance">
+            <div>
+              <h4 style="font-size: 1.15rem;">Marcus Vance</h4>
+              <p class="text-sm text-muted">Design & Media • 3rd Year</p>
+              <div style="color: #f59e0b; font-weight: 700; font-size: 0.85rem; margin-top: 0.2rem;">
+                ★★★★★ <span style="color: var(--navy-800);">4.8</span> (19 reviews)
+              </div>
+            </div>
+          </div>
+          <p class="text-sm" style="margin-bottom: 1.25rem;">"Lead designer for student startups. I teach auto-layout and component design in Figma. Looking to level up my code skills."</p>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <span class="tag tag-teach">Teaches: Figma UI/UX</span>
+            <span class="tag tag-learn">Learns: Frontend JS</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="section-padding">
+      <div class="feature-banner">
+        <div>
+          <h3>Ready to start exchanging skills on campus?</h3>
+          <p>Create your student profile in less than 2 minutes. No subscription fees ever.</p>
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="register.html" class="btn btn-primary btn-lg" style="background: var(--white); color: var(--navy-900);">Create Student Account</a>
+          <a href="login.html" class="btn btn-outline-white btn-lg">Log In</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Public Footer -->
+  <footer class="public-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo" style="color: var(--white);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+            <span>Skill<span class="highlight">Bridge</span></span>
+          </div>
+          <p>
+            An internal campus skill-exchange and peer-mentoring network for university students. Learn faster, collaborate better, and expand your network.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Platform</h4>
+          <ul class="footer-list">
+            <li><a href="search-skills.html">Browse Skills</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="dashboard.html">Student Dashboard</a></li>
+            <li><a href="requests.html">Learning Requests</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Student Portal</h4>
+          <ul class="footer-list">
+            <li><a href="login.html">Student Login</a></li>
+            <li><a href="register.html">Student Registration</a></li>
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="chat.html">Live Chat Messenger</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Administration</h4>
+          <ul class="footer-list">
+            <li><a href="manager/login.html">Manager Login</a></li>
+            <li><a href="manager/dashboard.html">Manager Analytics</a></li>
+            <li><a href="manager/students.html">Verify Students</a></li>
+            <li><a href="manager/requests.html">Exchange Audit</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 SkillBridge Platform. Designed for University Peer Learning. Frontend Prototype.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#">Campus Guidelines</a>
+          <a href="#">Student Code of Conduct</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

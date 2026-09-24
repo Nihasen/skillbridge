@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard – SkillBridge</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    <!-- Student Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-brand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+          <span>Skill<span style="color: var(--primary);">Bridge</span></span>
+        </a>
+        <button class="sidebar-close btn-icon-only">✕</button>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="sidebar-section-title">Navigation</div>
+          <nav class="sidebar-nav">
+            <a href="dashboard.html" class="sidebar-link active">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+              <span>Dashboard</span>
+            </a>
+
+            <a href="profile.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+              <span>My Profile</span>
+            </a>
+
+            <a href="my-skills.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+              <span>My Skills</span>
+            </a>
+
+            <a href="search-skills.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              <span>Search Skills</span>
+            </a>
+
+            <a href="requests.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+              <span>Learning Requests</span>
+              <span id="sidebar-request-badge" class="sidebar-badge badge-pending">1</span>
+            </a>
+
+            <a href="chat.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+              <span>Chat Messenger</span>
+              <span id="sidebar-chat-badge" class="sidebar-badge">2</span>
+            </a>
+
+            <a href="reviews.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+              <span>Ratings & Reviews</span>
+            </a>
+
+            <a href="notifications.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+              <span>Notifications</span>
+            </a>
+          </nav>
+        </div>
+
+        <div>
+          <div class="sidebar-section-title">Portals</div>
+          <nav class="sidebar-nav">
+            <a href="manager/dashboard.html" class="sidebar-link" style="color: #6366f1;">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+              <span>Manager Admin</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <img src="" class="user-avatar dynamic-user-avatar" alt="Avatar">
+          <div class="user-info">
+            <div id="sidebar-user-name" class="user-name">Alex Rivera</div>
+            <div id="sidebar-user-role" class="user-role">Computer Science</div>
+          </div>
+          <a href="login.html" title="Sign Out" style="color: var(--slate-400); padding: 0.35rem;">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+      <!-- Topbar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn">☰</button>
+          <div class="page-breadcrumb">
+            <span>SkillBridge</span>
+            <span>/</span>
+            <span class="current">Student Dashboard</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="notifications.html" class="icon-btn-round" title="Notifications">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+            <span id="topbar-notif-badge" class="icon-badge"></span>
+          </a>
+
+          <a href="profile.html" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+            <img src="" class="user-avatar user-avatar-sm dynamic-user-avatar" alt="Avatar">
+          </a>
+        </div>
+      </header>
+
+      <!-- Dashboard Body -->
+      <div class="content-container">
+        <!-- Welcome Banner -->
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Welcome back, <span id="user-welcome-name">Alex</span> 👋</h1>
+            <p class="page-description">You have 1 pending exchange barter offer and 2 unread chat messages.</p>
+          </div>
+          <div class="page-actions">
+            <a href="search-skills.html" class="btn btn-secondary">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              Find a Peer Mentor
+            </a>
+            <button class="btn btn-primary" onclick="openModal('add-skill-modal')">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+              Post Skill to Teach
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Key Metric Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon stat-icon-blue">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+            </div>
+            <div class="stat-details">
+              <div class="stat-label">Active Exchanges</div>
+              <div id="stat-active-exchanges" class="stat-value">2</div>
+              <div class="stat-meta positive">
+                <span>●</span> 1 request awaiting approval
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon stat-icon-indigo">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            </div>
+            <div class="stat-details">
+              <div class="stat-label">Skills Teaching</div>
+              <div id="stat-teaching-skills" class="stat-value">4</div>
+              <div class="stat-meta positive">React, Node, Tailwind, Git</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon stat-icon-green">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <div class="stat-details">
+              <div class="stat-label">Hours Swapped</div>
+              <div id="stat-hours" class="stat-value">27h</div>
+              <div class="stat-meta neutral">18 completed barter sessions</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon stat-icon-amber">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+            </div>
+            <div class="stat-details">
+              <div class="stat-label">Peer Reputation</div>
+              <div id="stat-rating" class="stat-value">4.9 ★</div>
+              <div class="stat-meta positive">Verified Campus Mentor</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Column Layout for Content -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start;">
+          <!-- Left Column -->
+          <div style="display: flex; flex-direction: column; gap: 2rem;">
+            <!-- Active / Pending Requests Card -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Recent Learning & Exchange Requests</h3>
+                  <div class="card-subtitle">Incoming barter offers from students across campus</div>
+                </div>
+                <a href="requests.html" class="btn btn-outline btn-sm">View All (5) →</a>
+              </div>
+              <div id="dashboard-requests-list" class="requests-list">
+                <!-- Dynamically loaded by dashboard.js -->
+              </div>
+            </div>
+
+            <!-- Recommended Campus Matches -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Recommended Peer Matches</h3>
+                  <div class="card-subtitle">Students teaching what you want to learn</div>
+                </div>
+                <a href="search-skills.html" class="btn btn-outline btn-sm">Browse Catalog →</a>
+              </div>
+              <div id="dashboard-matches-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem;">
+                <!-- Dynamically loaded by dashboard.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div style="display: flex; flex-direction: column; gap: 2rem;">
+            <!-- Exchange Snapshot Card -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">My Exchange Profile</h3>
+                <a href="profile.html" class="text-xs font-semibold">Edit</a>
+              </div>
+
+              <div style="text-align: center; margin-bottom: 1.25rem;">
+                <img src="" class="user-avatar user-avatar-lg dynamic-user-avatar" style="margin: 0 auto 0.75rem;" alt="Profile">
+                <h4 id="profile-card-name">Alex Rivera</h4>
+                <p class="text-xs text-muted">B.Tech Computer Science • 3rd Year</p>
+                <div style="display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.4rem;" class="badge badge-accepted">
+                  ✓ Campus Verified Student
+                </div>
+              </div>
+
+              <div style="border-top: 1px solid var(--slate-100); padding-top: 1rem; margin-bottom: 1rem;">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--navy-800); margin-bottom: 0.5rem;">I Can Teach:</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                  <span class="tag tag-teach">React.js</span>
+                  <span class="tag tag-teach">Node.js</span>
+                  <span class="tag tag-teach">Tailwind CSS</span>
+                  <span class="tag tag-teach">Git & GitHub</span>
+                </div>
+              </div>
+
+              <div style="border-top: 1px solid var(--slate-100); padding-top: 1rem;">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--navy-800); margin-bottom: 0.5rem;">I Want to Learn:</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                  <span class="tag tag-learn">UI/UX Figma</span>
+                  <span class="tag tag-learn">Python PyTorch</span>
+                  <span class="tag tag-learn">DSA Algorithms</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Activity Feed Card -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Live Activity Feed</h3>
+                <span class="badge badge-neutral">Live</span>
+              </div>
+              <div id="dashboard-activity-feed">
+                <!-- Dynamically loaded by dashboard.js -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Post New Skill -->
+  <div id="add-skill-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Post a Skill You Can Teach</h3>
+        <button class="modal-close-btn">✕</button>
+      </div>
+      <form id="dashboard-add-skill-form" onsubmit="handleQuickAddSkill(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="new-skill-title">Skill Title</label>
+            <input type="text" id="new-skill-title" class="form-control" placeholder="e.g. Flutter Mobile App Dev" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-skill-category">Category</label>
+            <select id="new-skill-category" class="form-control" required>
+              <option value="Web Development">Web Development</option>
+              <option value="AI & Data Science">AI & Data Science</option>
+              <option value="Design & Media">Design & Media</option>
+              <option value="Programming">Programming & DSA</option>
+              <option value="Hardware & Robotics">Hardware & Robotics</option>
+              <option value="Business & Finance">Business & Finance</option>
+              <option value="Languages">Languages & Humanities</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-skill-level">Your Proficiency Level</label>
+            <select id="new-skill-level" class="form-control">
+              <option value="Beginner">Beginner Friendly</option>
+              <option value="Intermediate" selected>Intermediate</option>
+              <option value="Advanced">Advanced / Expert</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-skill-desc">Brief Description / What You Will Cover</label>
+            <textarea id="new-skill-desc" class="form-control" placeholder="e.g. Can teach widget trees, state management with Riverpod, and connecting APIs." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="new-skill-seeking">What Skill Would You Like in Exchange?</label>
+            <input type="text" id="new-skill-seeking" class="form-control" placeholder="e.g. UI/UX Design or Python" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('add-skill-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Publish Skill Listing</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script>
+    function handleQuickAddSkill(e) {
+      e.preventDefault();
+      const user = SkillBridgeDB.getCurrentUser();
+      const title = document.getElementById('new-skill-title').value.trim();
+      const category = document.getElementById('new-skill-category').value;
+      const level = document.getElementById('new-skill-level').value;
+      const desc = document.getElementById('new-skill-desc').value.trim();
+      const seeking = document.getElementById('new-skill-seeking').value.trim();
+
+      const newSkill = {
+        id: 'sk_' + Date.now(),
+        title: title,
+        category: category,
+        level: level,
+        mentorId: user.id,
+        mentorName: user.name,
+        mentorDept: user.department,
+        mentorAvatar: user.avatar,
+        rating: 5.0,
+        description: desc,
+        seekingSkill: seeking,
+        hoursCompleted: 0,
+        badge: 'New'
+      };
+
+      SkillBridgeDB.addSkill(newSkill);
+
+      // Add to user teach skills array if not already present
+      if (!user.teachSkills.includes(title)) {
+        user.teachSkills.push(title);
+        SkillBridgeDB.updateCurrentUser(user);
+      }
+
+      closeModal('add-skill-modal');
+      e.target.reset();
+      showToast('Skill Published!', `"${title}" is now visible in the Campus Skill Catalog.`, 'success');
+      renderStudentDashboard();
+    }
+  </script>
+</body>
+</html>

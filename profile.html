@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Profile – SkillBridge</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <style>
+    .profile-hero {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      color: var(--white);
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--slate-700);
+    }
+
+    .profile-hero-content {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .profile-avatar-wrapper {
+      position: relative;
+    }
+
+    .profile-avatar-img {
+      width: 110px;
+      height: 110px;
+      border-radius: var(--radius-full);
+      object-fit: cover;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .profile-badge-overlay {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      background: var(--success);
+      color: var(--white);
+      border-radius: var(--radius-full);
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      border: 2px solid var(--navy-900);
+    }
+
+    .profile-stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .profile-stat-box {
+      text-align: center;
+    }
+
+    .profile-stat-val {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .profile-stat-lbl {
+      font-size: 0.8rem;
+      color: var(--slate-300);
+      margin-top: 0.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .profile-hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .profile-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-brand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+          <span>Skill<span style="color: var(--primary);">Bridge</span></span>
+        </a>
+        <button class="sidebar-close btn-icon-only">✕</button>
+      </div>
+
+      <div class="sidebar-content">
+        <div>
+          <div class="sidebar-section-title">Navigation</div>
+          <nav class="sidebar-nav">
+            <a href="dashboard.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+              <span>Dashboard</span>
+            </a>
+
+            <a href="profile.html" class="sidebar-link active">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+              <span>My Profile</span>
+            </a>
+
+            <a href="my-skills.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+              <span>My Skills</span>
+            </a>
+
+            <a href="search-skills.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              <span>Search Skills</span>
+            </a>
+
+            <a href="requests.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+              <span>Learning Requests</span>
+              <span id="sidebar-request-badge" class="sidebar-badge badge-pending">1</span>
+            </a>
+
+            <a href="chat.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+              <span>Chat Messenger</span>
+              <span id="sidebar-chat-badge" class="sidebar-badge">2</span>
+            </a>
+
+            <a href="reviews.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+              <span>Ratings & Reviews</span>
+            </a>
+
+            <a href="notifications.html" class="sidebar-link">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+              <span>Notifications</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <img src="" class="user-avatar dynamic-user-avatar" alt="Avatar">
+          <div class="user-info">
+            <div class="user-name dynamic-user-name">Alex Rivera</div>
+            <div class="user-role dynamic-user-dept">Computer Science</div>
+          </div>
+          <a href="login.html" title="Sign Out" style="color: var(--slate-400); padding: 0.35rem;">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle-btn">☰</button>
+          <div class="page-breadcrumb">
+            <a href="dashboard.html">Dashboard</a>
+            <span>/</span>
+            <span class="current">Student Profile</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <a href="notifications.html" class="icon-btn-round">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+            <span id="topbar-notif-badge" class="icon-badge"></span>
+          </a>
+          <img src="" class="user-avatar user-avatar-sm dynamic-user-avatar" alt="Avatar">
+        </div>
+      </header>
+
+      <div class="content-container">
+        <!-- Profile Banner -->
+        <div class="profile-hero">
+          <div class="profile-hero-content">
+            <div class="profile-avatar-wrapper">
+              <img src="" class="profile-avatar-img dynamic-user-avatar" alt="Profile Avatar">
+              <div class="profile-badge-overlay" title="Verified Campus Student">✓</div>
+            </div>
+
+            <div style="flex: 1;">
+              <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+                <h1 style="font-size: 2rem; color: var(--white);" class="dynamic-user-name">Alex Rivera</h1>
+                <span class="badge badge-indigo">Top Peer Mentor</span>
+                <span class="badge badge-accepted">Campus Verified</span>
+              </div>
+              <p style="color: var(--slate-300); margin: 0.35rem 0 0.85rem;" id="profile-dept-line">Computer Science • 3rd Year • Roll No: CS2023-049</p>
+              <p style="color: var(--slate-300); font-size: 0.95rem; max-width: 650px;" id="profile-bio-text">
+                Full-stack enthusiast building web apps. Happy to teach React, Tailwind, and Node.js. Looking to master UI/UX Figma and Python Machine Learning!
+              </p>
+            </div>
+
+            <div>
+              <button class="btn btn-outline-white" onclick="openModal('edit-profile-modal')">
+                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                Edit Profile
+              </button>
+            </div>
+          </div>
+
+          <div class="profile-stats-row">
+            <div class="profile-stat-box">
+              <div class="profile-stat-val" id="profile-exchanges-stat">18</div>
+              <div class="profile-stat-lbl">Exchanges Completed</div>
+            </div>
+            <div class="profile-stat-box">
+              <div class="profile-stat-val">4.9 ★</div>
+              <div class="profile-stat-lbl">Peer Reputation</div>
+            </div>
+            <div class="profile-stat-box">
+              <div class="profile-stat-val" id="profile-credits-stat">120</div>
+              <div class="profile-stat-lbl">Exchange Credits</div>
+            </div>
+            <div class="profile-stat-box">
+              <div class="profile-stat-val">100%</div>
+              <div class="profile-stat-lbl">Attendance Rate</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Column Details -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start;">
+          <!-- Left Details: Skills & Verified Reviews -->
+          <div style="display: flex; flex-direction: column; gap: 2rem;">
+            <!-- Skills Offered Card -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Skills I Teach (Barter Offerings)</h3>
+                  <div class="card-subtitle">Skills available for campus students to request</div>
+                </div>
+                <a href="my-skills.html" class="btn btn-outline btn-sm">+ Manage Skills</a>
+              </div>
+
+              <div id="profile-teach-tags" style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                <!-- Populated via script -->
+              </div>
+            </div>
+
+            <!-- Skills Learning Wishlist -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Skills I Want to Learn (Wishlist)</h3>
+                  <div class="card-subtitle">Peers teaching these skills can barter with me</div>
+                </div>
+                <a href="my-skills.html" class="btn btn-outline btn-sm">+ Add to Wishlist</a>
+              </div>
+
+              <div id="profile-learn-tags" style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                <!-- Populated via script -->
+              </div>
+            </div>
+
+            <!-- Peer Reviews Section -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Verified Student Reviews (3)</h3>
+                  <div class="card-subtitle">Feedback given by classmates after completed exchange sessions</div>
+                </div>
+                <a href="reviews.html" class="btn btn-outline btn-sm">All Reviews →</a>
+              </div>
+
+              <div id="profile-reviews-list" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                <!-- Populated via script -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Details: Contact & Schedule -->
+          <div style="display: flex; flex-direction: column; gap: 2rem;">
+            <div class="card">
+              <h3 class="card-title" style="margin-bottom: 1.25rem;">Availability & Preferences</h3>
+
+              <div style="margin-bottom: 1.25rem;">
+                <div class="text-xs text-muted" style="font-weight: 700; text-transform: uppercase; margin-bottom: 0.35rem;">Preferred Exchange Hours</div>
+                <p class="font-semibold text-navy" id="profile-avail-text">Weekdays 5PM - 8PM, Weekends</p>
+              </div>
+
+              <div style="margin-bottom: 1.25rem;">
+                <div class="text-xs text-muted" style="font-weight: 700; text-transform: uppercase; margin-bottom: 0.35rem;">Session Mode</div>
+                <div style="display: flex; gap: 0.5rem; margin-top: 0.25rem;">
+                  <span class="badge badge-primary">Library Study Rooms</span>
+                  <span class="badge badge-indigo">Google Meet</span>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 1.25rem;">
+                <div class="text-xs text-muted" style="font-weight: 700; text-transform: uppercase; margin-bottom: 0.35rem;">Campus Affiliation</div>
+                <p class="text-sm">Main Campus, Tech Block B • Student Club Mentor</p>
+              </div>
+
+              <div style="padding-top: 1rem; border-top: 1px solid var(--slate-100);">
+                <a href="chat.html" class="btn btn-primary" style="width: 100%;">Open Message Inbox</a>
+              </div>
+            </div>
+
+            <div class="card" style="background: linear-gradient(135deg, #eff6ff 0%, #eef2ff 100%); border-color: var(--primary-border);">
+              <h4 style="color: var(--primary-dark); margin-bottom: 0.5rem;">SkillBridge Badge Status</h4>
+              <p class="text-xs" style="color: var(--navy-700); margin-bottom: 1rem;">You have achieved level 3 peer educator status. 5 more exchange sessions to unlock Senior Mentor badge!</p>
+              <div style="background: rgba(255, 255, 255, 0.7); height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 0.5rem;">
+                <div style="width: 78%; height: 100%; background: var(--primary);"></div>
+              </div>
+              <span class="text-xs font-semibold" style="color: var(--primary);">78% to Next Level</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Edit Profile -->
+  <div id="edit-profile-modal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Edit Student Profile</h3>
+        <button class="modal-close-btn">✕</button>
+      </div>
+      <form id="edit-profile-form" onsubmit="handleSaveProfile(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="edit-name">Full Name</label>
+            <input type="text" id="edit-name" class="form-control" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="edit-bio">Bio & Peer Introduction</label>
+            <textarea id="edit-bio" class="form-control" rows="3" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="edit-avail">Preferred Availability</label>
+            <input type="text" id="edit-avail" class="form-control" placeholder="e.g. Weekdays 6PM - 9PM, Sat mornings" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('edit-profile-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Profile Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProfileData();
+    });
+
+    function loadProfileData() {
+      const user = SkillBridgeDB.getCurrentUser();
+      const reviews = SkillBridgeDB.getReviews();
+
+      // Text fields
+      document.querySelectorAll('.dynamic-user-name').forEach(el => el.textContent = user.name);
+      document.querySelectorAll('.dynamic-user-dept').forEach(el => el.textContent = user.department);
+      document.querySelectorAll('.dynamic-user-avatar').forEach(el => {
+        el.src = user.avatar;
+        el.alt = user.name;
+      });
+
+      document.getElementById('profile-dept-line').textContent = `${user.department} • ${user.year} • Roll No: ${user.rollNo}`;
+      document.getElementById('profile-bio-text').textContent = user.bio;
+      document.getElementById('profile-avail-text').textContent = user.availability || 'Weekdays 5PM - 8PM, Weekends';
+      document.getElementById('profile-exchanges-stat').textContent = user.exchangesCompleted || 18;
+      document.getElementById('profile-credits-stat').textContent = user.credits || 120;
+
+      // Render Teach Tags
+      const teachContainer = document.getElementById('profile-teach-tags');
+      teachContainer.innerHTML = (user.teachSkills || []).map(skill => `
+        <span class="tag tag-teach" style="padding: 0.4rem 0.85rem; font-size: 0.85rem;">
+          ✓ ${skill}
+        </span>
+      `).join('');
+
+      // Render Learn Tags
+      const learnContainer = document.getElementById('profile-learn-tags');
+      learnContainer.innerHTML = (user.learnSkills || []).map(skill => `
+        <span class="tag tag-learn" style="padding: 0.4rem 0.85rem; font-size: 0.85rem;">
+          🎯 ${skill}
+        </span>
+      `).join('');
+
+      // Populate Edit Form Inputs
+      document.getElementById('edit-name').value = user.name;
+      document.getElementById('edit-bio').value = user.bio;
+      document.getElementById('edit-avail').value = user.availability || 'Weekdays 5PM - 8PM, Weekends';
+
+      // Render Reviews
+      const revContainer = document.getElementById('profile-reviews-list');
+      revContainer.innerHTML = reviews.map(rev => `
+        <div style="background: var(--slate-50); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--slate-200);">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <img src="${rev.reviewerAvatar}" class="user-avatar user-avatar-sm" alt="${rev.reviewerName}">
+              <div>
+                <strong style="font-size: 0.9rem;">${rev.reviewerName}</strong>
+                <div class="text-xs text-muted">${rev.reviewerDept} • Exchanged: <em>${rev.skill}</em></div>
+              </div>
+            </div>
+            <div style="color: #f59e0b; font-size: 0.9rem;">${'★'.repeat(rev.rating)}</div>
+          </div>
+          <p class="text-sm" style="color: var(--navy-800);">${rev.comment}</p>
+          <div class="text-xs text-muted" style="margin-top: 0.5rem;">${rev.date}</div>
+        </div>
+      `).join('');
+    }
+
+    function handleSaveProfile(e) {
+      e.preventDefault();
+      const user = SkillBridgeDB.getCurrentUser();
+      user.name = document.getElementById('edit-name').value.trim();
+      user.bio = document.getElementById('edit-bio').value.trim();
+      user.availability = document.getElementById('edit-avail').value.trim();
+
+      SkillBridgeDB.updateCurrentUser(user);
+      closeModal('edit-profile-modal');
+      showToast('Profile Updated', 'Your student details were saved successfully.', 'success');
+      loadProfileData();
+    }
+  </script>
+</body>
+</html>
